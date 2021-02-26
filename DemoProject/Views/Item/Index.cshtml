@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Items";
+}
+@model IEnumerable<DemoProject.Models.Item>
+<div class="row">
+    <div class="col-6">
+        <h1 class="text-primary">Borrowed Items List</h1>
+    </div>
+    <div class="col-6" align="right">
+        <a class="btn btn-primary" asp-controller="Item" asp-action="Create">Create New Item</a>
+    </div>
+
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>Item Name</td>
+                    <td>Borrower</td>
+                    <td>Lender</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ItemName</td>
+                        <td>@item.Borrower</td>
+                        <td>@item.Lender</td>
+                    </tr>
+                    
+                }
+            </tbody>
+        </table>
+
+    } else
+    {
+        <h1>No item found</h1>
+    }
+</div>

@@ -1,0 +1,30 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Create Item";
+}
+
+@model DemoProject.Models.Item
+<div class="row">
+    <div class="col-6 offset-3">
+        <form asp-action="Create" method="post" asp-controller="Item">
+            <div class="form-group">
+                <label asp-for="ItemName"></label><br />
+                <input type="text" class="form-control" asp-for="ItemName" placeholder="Name" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Borrower"></label><br />
+                <input type="text" class="form-control" asp-for="Borrower" placeholder="Name" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Lender"></label><br />
+                <input type="text" class="form-control" asp-for="Lender" placeholder="Name" />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Create</button>
+                <a asp-controller="Item" asp-action="Index">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
