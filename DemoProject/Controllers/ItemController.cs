@@ -29,10 +29,57 @@ namespace DemoProject.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Item obj)
         {
-            _db.Items.Add(obj);
+
+            if (ModelState.IsValid)
+            {
+                _db.Items.Add(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(obj);
+            
+        }
+
+
+        public IActionResult Update(int id)
+        {
+            Item obj = _db.Items.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+
+            return View(obj);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult UpdatePost(Item item)
+        {
+            
+            if(ModelState.IsValid)
+            {
+                _db.Items.Update(item);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(item);
+        }
+
+
+
+        public IActionResult Delete(int id)
+        {
+            Item obj = _db.Items.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            _db.Items.Remove(obj);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
-
     }
 }

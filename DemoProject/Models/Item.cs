@@ -12,9 +12,12 @@ namespace DemoProject.Models
         [Key]
         public int Id { get; set; }
         [DisplayName("Who Borrowed")]
+        [Required]
         public string Borrower { get; set; }
+        [Required]
         public string Lender { get; set; }
         [DisplayName("Item name")]
+        [Required]
         public string ItemName { get; set; }
     }
 }
